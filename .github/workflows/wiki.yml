@@ -29,8 +29,8 @@ jobs:
                 mkdir tmp_wiki
                 cd tmp_wiki
                 git init
-                git config user.name github-actions
-                git config user.email github-actions@github.com
+                git config user.name actions-user
+                git config user.email actions-user@github.com
                 git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
             # 4. Synchronize differences between `wiki` & `tmp_wiki`
             # 5. Push new Wiki content
