@@ -34,6 +34,9 @@ jobs:
                 git config user.name $USER_NAME
                 git config user.email $USER_EMAIL
                 git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+            - name: Get last commit info
+              run: echo "COMMIT_NAME=$(git log -n 1 -- wiki/)" >> $GITHUB_OUTPUT
+              id: commit
             # 4. Synchronize differences between `wiki` & `tmp_wiki`
             # 5. Push new Wiki content
             - name: Push content to wiki
@@ -41,5 +44,5 @@ jobs:
                 rsync -av --delete wiki/ tmp_wiki/ --exclude .git
                 cd tmp_wiki
                 git add .
-                git log -n 1 -- wiki/ | git commit -F -
+                git log -n 1 -- wiki/ | git commit -m "${{ steps.commit.outputs.COMMIT_NAME }}"
                 git push -f --set-upstream https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git master
