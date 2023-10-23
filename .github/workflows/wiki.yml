@@ -44,5 +44,5 @@ jobs:
                 rsync -av --delete wiki/ tmp_wiki/ --exclude .git
                 cd tmp_wiki
                 git add .
-                git log -n 1 -- wiki/ | git commit -m "${{ steps.commit.outputs.COMMIT_NAME }}"
+                git commit -m "${{ steps.commit.outputs.COMMIT_NAME }}"
                 git push -f --set-upstream https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git master
