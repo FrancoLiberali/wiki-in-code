@@ -35,7 +35,7 @@ jobs:
                 git config user.email $USER_EMAIL
                 git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
             - name: Get last commit info
-              run: echo "COMMIT_NAME=$(git log -n 1 -- wiki/)" >> $GITHUB_OUTPUT
+              run: echo "COMMIT_NAME=$(git log --oneline -n 1 -- wiki/)" >> $GITHUB_OUTPUT
               id: commit
             # 4. Synchronize differences between `wiki` & `tmp_wiki`
             # 5. Push new Wiki content
