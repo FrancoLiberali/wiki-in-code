@@ -34,9 +34,11 @@ jobs:
             # 4. Try to apply all the changes to the wiki
             - name: Verify conflicts
               run: |
+                echo "hola"
                 git diff --no-ext-diff main:wiki/** ** > wiki_diff
+                cat wiki_diff
                 sed -i "s/a\/wiki/a/" wiki_diff
                 sed -i "s/b\/wiki/b/" wiki_diff
+                cat wiki_diff
                 cd tmp_wiki
-                cat ../wiki_diff
                 git apply ../wiki_diff
