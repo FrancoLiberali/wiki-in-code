@@ -35,6 +35,7 @@ jobs:
             # 4. Try to apply all the changes to the wiki
             - name: Get changes
               run: |
+                git status
                 pwd
                 ls
                 git diff --no-ext-diff main:wiki/ HEAD:wiki/ > wiki_diff
