@@ -31,9 +31,10 @@ jobs:
               run: |
                 mkdir tmp_wiki
                 cd tmp_wiki
-                git config --global init.defaultBranch main
                 git init
                 git pull https://github.com/FrancoLiberali/wiki-in-code.wiki.git
+            - name: Setup main branch locally without switching current branch
+              run: git fetch origin main:main
             # 4. Try to apply all the changes to the wiki
             - name: Get changes
               run: |
