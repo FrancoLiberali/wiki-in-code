@@ -32,15 +32,14 @@ jobs:
                 git init
                 git pull https://github.com/FrancoLiberali/wiki-in-code.wiki.git
             # 4. Try to apply all the changes to the wiki
-            - name: Verify conflicts
+            - name: Get changes
+              run: git diff --no-ext-diff main:wiki/** wiki/** > wiki_diff
+            - name: Prepare changes
               run: |
-                echo 'hola'
-                pwd
-                ls
-                git diff --allow-empty --no-ext-diff main:wiki/** wiki/** > wiki_diff
-                cat wiki_diff
                 sed -i "s/a\/wiki/a/" wiki_diff
                 sed -i "s/b\/wiki/b/" wiki_diff
                 cat wiki_diff
+            - name: Apply changes
+              run: |
                 cd tmp_wiki
                 git apply --allow-empty --ignore-space-change --ignore-whitespace ../wiki_diff
