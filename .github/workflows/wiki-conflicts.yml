@@ -37,10 +37,10 @@ jobs:
                 echo 'hola'
                 pwd
                 ls
-                git diff --no-ext-diff main:wiki/** wiki/** > wiki_diff
+                git diff --allow-empty --no-ext-diff main:wiki/** wiki/** > wiki_diff
                 cat wiki_diff
                 sed -i "s/a\/wiki/a/" wiki_diff
                 sed -i "s/b\/wiki/b/" wiki_diff
                 cat wiki_diff
                 cd tmp_wiki
-                git apply --ignore-space-change --ignore-whitespace ../wiki_diff
+                git apply --allow-empty --ignore-space-change --ignore-whitespace ../wiki_diff
