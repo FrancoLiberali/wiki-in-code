@@ -8,6 +8,8 @@ on:
         - wiki/**
 
 env:
+  USER_NAME: ${{ github.actor }}
+  USER_EMAIL: ${{ github.event.pusher.email }}
   OWNER: ${{ github.event.repository.owner.name }} # This is the repository owner
   REPOSITORY_NAME: ${{ github.event.repository.name }} # This is the repository name
 
@@ -27,6 +29,8 @@ jobs:
                 mkdir tmp_wiki
                 cd tmp_wiki
                 git init
+                git config user.name $USER_NAME
+                git config user.email $USER_EMAIL
                 git pull https://github.com/$OWNER/$REPOSITORY_NAME.wiki.git
             # 4. Try to apply all the changes to the wiki
             - name: Push content to wiki
