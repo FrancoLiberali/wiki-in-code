@@ -34,7 +34,10 @@ jobs:
                 git pull https://github.com/FrancoLiberali/wiki-in-code.wiki.git
             # 4. Try to apply all the changes to the wiki
             - name: Get changes
-              run: git diff --no-ext-diff main:wiki/ HEAD:wiki/ > wiki_diff
+              run: |
+                pwd
+                ls
+                git diff --no-ext-diff main:wiki/ HEAD:wiki/ > wiki_diff
             - name: Prepare changes
               run: |
                 sed -i "s/a\/wiki/a/" wiki_diff
