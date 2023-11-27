@@ -42,4 +42,4 @@ jobs:
             - name: Apply changes
               run: |
                 cd tmp_wiki
-                git apply --allow-empty --ignore-space-change --ignore-whitespace ../wiki_diff
+                git apply --ignore-space-change ../wiki_diff
