@@ -37,7 +37,7 @@ jobs:
                 echo 'hola'
                 pwd
                 ls
-                git diff --no-ext-diff main:wiki/** ** > wiki_diff
+                git diff --no-ext-diff main:wiki/** wiki/** > wiki_diff
                 cat wiki_diff
                 sed -i "s/a\/wiki/a/" wiki_diff
                 sed -i "s/b\/wiki/b/" wiki_diff
