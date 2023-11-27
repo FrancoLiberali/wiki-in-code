@@ -32,7 +32,7 @@ jobs:
                 git init
                 git config user.name $USER_NAME
                 git config user.email $USER_EMAIL
-                git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+                git pull https://github.com/FrancoLiberali/wiki-in-code.wiki.git
             # 4. Try to apply all the changes to the wiki
             - name: Verify conflicts
               run: |
