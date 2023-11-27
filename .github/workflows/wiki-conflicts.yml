@@ -8,6 +8,7 @@ on:
         - wiki/**
 
 env:
+  USER_TOKEN: ${{ secrets.WIKI_ACTION_TOKEN }} # This is the repository secret
   USER_NAME: ${{ github.actor }}
   USER_EMAIL: ${{ github.event.pusher.email }}
   OWNER: ${{ github.event.repository.owner.name }} # This is the repository owner
@@ -31,9 +32,9 @@ jobs:
                 git init
                 git config user.name $USER_NAME
                 git config user.email $USER_EMAIL
-                git pull https://github.com/$OWNER/$REPOSITORY_NAME.wiki.git
+                git pull https://$USER_TOKEN@github.com/$OWNER/$REPOSITORY_NAME.wiki.git
             # 4. Try to apply all the changes to the wiki
-            - name: Push content to wiki
+            - name: Verify conflicts
               run: |
                 git diff main:wiki/** ** > wiki_diff
                 sed -i "s/a\/wiki/a/" wiki_diff
