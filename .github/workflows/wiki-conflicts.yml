@@ -38,4 +38,5 @@ jobs:
                 sed -i "s/a\/wiki/a/" wiki_diff
                 sed -i "s/b\/wiki/b/" wiki_diff
                 cd tmp_wiki
+                cat ../wiki_diff
                 git apply ../wiki_diff
