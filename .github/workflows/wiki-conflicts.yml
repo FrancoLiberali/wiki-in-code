@@ -37,6 +37,7 @@ jobs:
             # 4. Try to apply all the changes to the wiki
             - name: Get changes
               run: |
+                git branch
                 git status
                 pwd
                 ls
